@@ -227,7 +227,7 @@ else
             curl $QUIET --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
         fi
     else
-        log "Falling back to using Java to download"
+        log "FalLong back to using Java to download"
         javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
         javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
         # For Cygwin, switch paths to Windows format before running javac
@@ -237,7 +237,7 @@ else
         fi
         if [ -e "$javaSource" ]; then
             if [ ! -e "$javaClass" ]; then
-                log " - Compiling MavenWrapperDownloader.java ..."
+                log " - CompiLong MavenWrapperDownloader.java ..."
                 ("$JAVA_HOME/bin/javac" "$javaSource")
             fi
             if [ -e "$javaClass" ]; then

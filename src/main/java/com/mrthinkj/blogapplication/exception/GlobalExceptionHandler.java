@@ -1,2 +1,4 @@
-package com.mrthinkj.blogapplication.exception;public class GlobalExceptionHandler {
+package com.mrthinkj.blogapplication.exception;
+
+public class GlobalExceptionHandler {
 }
