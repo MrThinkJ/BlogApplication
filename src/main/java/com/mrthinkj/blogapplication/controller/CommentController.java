@@ -2,8 +2,10 @@ package com.mrthinkj.blogapplication.controller;
 
 import com.mrthinkj.blogapplication.payload.CommentDTO;
 import com.mrthinkj.blogapplication.payload.CommentResponse;
+import com.mrthinkj.blogapplication.service.CommentService;
 import com.mrthinkj.blogapplication.service.impl.CommentServiceImpl;
 import com.mrthinkj.blogapplication.utils.AppConstants;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,15 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/posts")
 public class CommentController {
-    CommentServiceImpl commentService;
+    CommentService commentService;
 
-    public CommentController(CommentServiceImpl commentService) {
+    public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
 
     @PostMapping("/{postId}/comments")
     public ResponseEntity<CommentDTO> createComment(@PathVariable Long postId,
-                                                    @RequestBody CommentDTO commentDTO) {
+                                                    @Valid @RequestBody CommentDTO commentDTO) {
         System.out.println(commentDTO);
         CommentDTO commentDTORes = commentService.createComment(postId, commentDTO);
         return new ResponseEntity<>(commentDTORes, HttpStatus.CREATED);
@@ -43,7 +45,7 @@ public class CommentController {
     @PutMapping("/{postId}/comments/{id}")
     public CommentDTO updateCommentById(@PathVariable Long postId,
                                         @PathVariable Long id,
-                                        @RequestBody CommentDTO commentDTO){
+                                        @Valid @RequestBody CommentDTO commentDTO){
         return commentService.updateCommentById(postId, id, commentDTO);
     }
 
